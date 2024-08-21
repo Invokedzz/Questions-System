@@ -1,2 +1,7 @@
-import inquirer from "inquirer";
-const ourInquirer = inquirer;
+import { input } from "@inquirer/prompts";
+
+const ans = input({
+    message: 'Enter your name'
+});
+
+console.log(ans);
