@@ -34,8 +34,29 @@ export class biblicalQuiz {
         }, 1000);
 
         setTimeout(async() => {
-            await this.features();
+            await this.userDecision();
         }, 4000);
+    };
+
+    async userDecision () {
+        const decision = await inquirer.prompt([
+            {
+                type: "list",
+                name: "decisions",
+                message: "Do you want to play?",
+                choices: ["Yes", "No"],
+            },
+
+        ]);
+
+        if (decision.decisions === "Yes") await this.startQuiz();
+        await this.exitQuiz();
+
+    };
+
+    async exitQuiz () {
+        console.log(chalk.blueBright("Thanks for your time!"));
+        process.exit();
     };
 
     async features () {
@@ -56,16 +77,67 @@ export class biblicalQuiz {
         
                 ]);
 
-                if (showOptions.features === "Start Quiz") console.log("Hi!");
+                if (showOptions.features === "Start Quiz") {
+
+                    setTimeout(async () => {
+                        console.log(`Alright! Let's start the quiz!`);
+                        await this.startQuiz();
+                    }, 2000);
+
+                };
 
                 if (showOptions.features === "About") await this.aboutQuiz();
 
                 if (showOptions.features === "Exit") {
                     console.log("Thanks for playing!");
                     process.exit();
-                }
+                };
 
-    }
+    };
+
+    async startQuiz () {
+        const allquestions = await inquirer.prompt([
+            {
+                type: 'list',
+                name: 'favoriteColor',
+                message: 'Qual é a sua cor favorita?',
+                choices: ['Azul', 'Verde', 'Vermelho', 'Amarelo', 'Outro'],
+            },
+
+            {
+                type: 'list',
+                name: 'preferredOS',
+                message: 'Qual é o seu sistema operacional preferido?',
+                choices: ['Windows', 'macOS', 'Linux', 'Outro'],
+            },
+
+            {
+                type: 'list',
+                name: 'musicGenre',
+                message: 'Qual tipo de música você mais gosta?',
+                choices: ['Rock', 'Pop', 'Jazz', 'Clássica', 'Eletrônica']
+            },
+                
+        ]);
+
+        if (allquestions.favoriteColor !== 'Azul') {
+            console.log(chalk.red("Try Again!"));
+            return;
+        };
+
+        if (allquestions.preferredOS !== 'Linux') {
+            console.log(chalk.red("Try Again!"));
+            return;
+        };
+
+        if (allquestions.musicGenre !== 'Pop') {
+            console.log(chalk.red("Try Again!"));
+            return;
+        };
+        
+        console.log(chalk.greenBright("Well Done!"));
+
+    };
 
 }
 
