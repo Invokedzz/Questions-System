@@ -1,6 +1,7 @@
+#!/usr/bin/env node
 import inquirer from "inquirer";
 import chalk from "chalk";
-// Opções podem ser: "Start Quiz", "About", "Exit"
+import nanospinner, { createSpinner } from "nanospinner";
 
 export class biblicalQuiz {
     constructor (
@@ -12,29 +13,33 @@ export class biblicalQuiz {
             {
                 type: "input",
                 name: "name",
-                message: "What is your name?"
+                message: "Qual é o seu nome de usuário?\n",
             },
         ]);
     
         if (!name.name && name.name === "") {
-            console.log("Please, insert a valid name!");
+            console.log("Por favor, insira um nome válido!");
             return false;
         };
         
-        console.log(`Welcome to our quiz, ${name.name}!`);
-        console.log(chalk.greenBright("Now, let's get started!"));
+        console.log(`Bem-vindo (a), ${name.name}!\n`);
+        console.log(chalk.greenBright("Agora, vamos começar...\n"));
 
     };
 
     async aboutQuiz () {
 
         setTimeout(() => {
+
             console.log(chalk.greenBright("O objetivo desse quiz é o ensino da Bíblia para os mais jovens. De uma maneira lúdica e divertida!"));
             console.log("Você pode apoiar esse projeto em: https://github.com/Invokedzz");
+
         }, 1000);
 
         setTimeout(async() => {
+
             await this.userDecision();
+        
         }, 4000);
     };
 
@@ -43,103 +48,193 @@ export class biblicalQuiz {
             {
                 type: "list",
                 name: "decisions",
-                message: "Do you want to play?",
-                choices: ["Yes", "No"],
+                message: "Você gostaria de jogar o quiz?",
+                choices: ["Sim", "Não"],
             },
 
         ]);
 
-        if (decision.decisions === "Yes") await this.startQuiz();
+        if (decision.decisions === "Sim") { 
+            
+           // setTimeout(async () => {
+                const spinner = createSpinner(`Certo! Vamos começar o quiz!\n`).start();
+                spinner.success();
+          //  }, 2000);
+
+                await this.startQuiz();
+        };
+
         await this.exitQuiz();
 
     };
 
     async exitQuiz () {
-        console.log(chalk.blueBright("Thanks for your time!"));
+
+        console.log(chalk.blueBright("Obrigado pelo seu tempo!"));
         process.exit();
+    
     };
 
     async features () {
          
             await this.getStarted();
-            // await this.startQuiz();
 
 
                 const showOptions = await inquirer.prompt([
+
                     {
                         type: "list",
                         name: "features",
-                        message: "What would you like to do?",
-                        choices: ["Start Quiz", "About", "Exit"],
+                        message: "O que você deseja fazer?",
+                        choices: ["Começar Quiz", "Sobre", "Sair"],
                     },
 
-
-        
                 ]);
 
-                if (showOptions.features === "Start Quiz") {
+                if (showOptions.features === "Começar Quiz") {
 
                     setTimeout(async () => {
-                        console.log(`Alright! Let's start the quiz!`);
+
+                        console.log(`Certo... Vamos começar o quiz!\n`);
                         await this.startQuiz();
+                    
                     }, 2000);
 
                 };
 
-                if (showOptions.features === "About") await this.aboutQuiz();
+                if (showOptions.features === "Sobre") await this.aboutQuiz();
 
-                if (showOptions.features === "Exit") {
-                    console.log("Thanks for playing!");
+                if (showOptions.features === "Sair") {
+                    console.log("Agradecemos a sua visita!");
                     process.exit();
                 };
 
     };
 
     async startQuiz () {
-        const allquestions = await inquirer.prompt([
-            {
-                type: 'list',
-                name: 'favoriteColor',
-                message: 'Qual é a sua cor favorita?',
-                choices: ['Azul', 'Verde', 'Vermelho', 'Amarelo', 'Outro'],
-            },
 
-            {
-                type: 'list',
-                name: 'preferredOS',
-                message: 'Qual é o seu sistema operacional preferido?',
-                choices: ['Windows', 'macOS', 'Linux', 'Outro'],
-            },
+        await this.askQuestion(
+            'favoriteColor',
+            'Qual é a sua cor favorita?',
+            ['Azul', 'Verde', 'Vermelho', 'Amarelo', 'Outro'],
+            'Azul', 
+            3,
+        );
 
-            {
-                type: 'list',
-                name: 'musicGenre',
-                message: 'Qual tipo de música você mais gosta?',
-                choices: ['Rock', 'Pop', 'Jazz', 'Clássica', 'Eletrônica']
-            },
-                
-        ]);
+        await this.askQuestion(
+            'preferredOS',
+            'Qual é o seu sistema operacional preferido?',
+            ['Windows', 'macOS', 'Linux', 'Outro'],
+            'Linux',
+            3,
+        );
 
-        if (allquestions.favoriteColor !== 'Azul') {
-            console.log(chalk.red("Try Again!"));
-            return;
-        };
+        await this.askQuestion(
+            'musicGenre',
+            'Qual tipo de música você mais gosta?',
+            ['Rock', 'Pop', 'Jazz', 'Clássica', 'Eletrônica'],
+            'Pop',
+            3,
+        );
 
-        if (allquestions.preferredOS !== 'Linux') {
-            console.log(chalk.red("Try Again!"));
-            return;
-        };
-
-        if (allquestions.musicGenre !== 'Pop') {
-            console.log(chalk.red("Try Again!"));
-            return;
-        };
         
-        console.log(chalk.greenBright("Well Done!"));
+        await this.askQuestion(
+            'hobbiesMenu',
+            'Qual é o seu hobbie favorito?',
+            ['Futebol', 'Cinema', 'Jogar', 'Cantar', 'Outro'],
+            'Cinema',
+            3,
+        );
 
-    };
+        await this.askQuestion(
+            'mainChoice',
+            'Qual a sua linguagem de programação favorita?',
+            ['JavaScript', 'Python', 'C++', 'Java', 'Outro'],
+            'Java',
+            3,
+        );
 
+        await this.askQuestion(
+            'favoriteFood',
+            'Qual é o seu prato favorito?',
+            ['Macarrao', 'Arroz', 'Feijão', 'Carne', 'Outro'],
+            'Feijão',
+            3,
+        );
+
+        await this.askQuestion(
+            'favoriteDrink',
+            'Qual é a sua bebida favorita?',
+            ['Cerveja', 'Vinho', 'Refrigerante', 'Suco', 'Outro'],
+            'Outro',
+            3,
+        );
+
+        await this.askQuestion(
+            'favoriteAnimal',
+            'Qual é o seu animal favorito?',
+            ['Cachorro', 'Gato', 'Cavalo', 'Papagaio', 'Outro'],
+            'Cachorro',
+            3,
+        );
+
+        await this.askQuestion(
+            'favoriteSport',
+            'Qual é o seu esporte favorito?',
+            ['Futebol', 'Volei', 'Basquete', 'Natação', 'Outro'],
+            'Outro',
+            3,
+        );
+
+        await this.askQuestion(
+            'favoriteMovie',
+            'Qual é o seu filme favorito?',
+            ['Um filme', 'Dois filmes', 'Tres filmes', 'Quatro filmes', 'Outro'],
+            'Um filme',
+            3,
+        ); 
+
+        const spinnerFinal = createSpinner(chalk.greenBright(`Muito bem! Você acaba de concluir o quiz! Você acertou todas as questões!\n`)).start();
+        spinnerFinal.success();
+    }
+
+    async askQuestion (name, message, choices, correctAnswer, maxAttempts) {
+        let attempts = 0;
+        let answer;
+        const limit = maxAttempts;
+        do {
+            const response = await inquirer.prompt([
+                {
+                    type: 'list',
+                    name: name,
+                    message: message,
+                    choices: choices,
+                },
+            ]);
+
+            answer = response [name];
+
+            if (answer !== correctAnswer) {
+
+                if (attempts < limit) {
+                    attempts++;
+                    console.log(chalk.redBright("Resposta incorreta! Tente novamente.\n"));
+                    console.log(`Tentativas restantes: ${limit - attempts}\n`);
+                };
+
+                if (attempts === limit) {
+                    console.log(chalk.redBright("Tentativas esgotadas. Voltando para a tela inicial.\n"));
+                    await this.getStarted();
+                };
+
+            };
+
+
+        } while (answer !== correctAnswer);
+
+    };        
 }
+
 
 const startQuiz = new biblicalQuiz();
 startQuiz.features();
