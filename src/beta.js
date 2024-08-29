@@ -6,7 +6,7 @@ import fs from "fs";
 import nanospinner, { createSpinner } from "nanospinner";
 import figlet from "figlet";
 import gradientString from "gradient-string";
-import chalkAnimation from "chalk-animation";
+// import chalkAnimation from "chalk-animation";
 
 export class biblicalQuiz {
     constructor (
@@ -27,8 +27,8 @@ export class biblicalQuiz {
 
         const data = fs.readFileSync(pathInfo, 'utf8');
         if (data.split('\n').includes(username)) {
-            console.log(`${username} já está registrado! Escolha outro nome.`);
-            throw new Error("Tente novamente!");
+            console.log(chalk.red(`${username} já está registrado! Escolha outro nome.`));
+            throw new Error(chalk.redBright("Tente novamente!"));
         };
 
         fs.appendFile(pathInfo, username + '\n', (err) => {
@@ -36,11 +36,11 @@ export class biblicalQuiz {
         });
 
         if (!username && username == "") {
-            console.log("Por favor, insira um nome válido!\n");
-            throw new Error("Tente novamente!");
+            console.log(chalk.red("Por favor, insira um nome válido!\n"));
+            throw new Error(chalk.redBright("Tente novamente!"));
         };
         
-        console.log((`Bem-vindo (a), ${username}!\n`));
+        console.log(chalk.blueBright(`Bem-vindo (a), ${username}!\n`));
         console.log((`Agora vamos iniciar...\n`));
 
     };
