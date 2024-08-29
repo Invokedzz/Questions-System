@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 import inquirer from "inquirer";
 import chalk from "chalk";
+import path from "path";
+import fs from "fs";
 import nanospinner, { createSpinner } from "nanospinner";
 
 export class biblicalQuiz {
@@ -12,17 +14,24 @@ export class biblicalQuiz {
         const name = await inquirer.prompt([
             {
                 type: "input",
-                name: "name",
+                name: "user",
                 message: "Qual é o seu nome de usuário?\n",
             },
         ]);
-    
-        if (!name.name && name.name === "") {
-            console.log("Por favor, insira um nome válido!");
+
+        const username = name.user.trim();
+        const pathInfo = path.join('./src', 'archive.txt');
+
+        fs.appendFile(pathInfo, username + '\n', (err) => {
+            if (err) throw err;
+        });
+
+        if (!username && username === "") {
+            console.log("Por favor, insira um nome válido!\n");
             return false;
         };
         
-        console.log(`Bem-vindo (a), ${name.name}!\n`);
+        console.log(`Bem-vindo (a), ${username}!\n`);
         console.log(chalk.greenBright("Agora, vamos começar...\n"));
 
     };
