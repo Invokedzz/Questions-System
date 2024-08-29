@@ -6,6 +6,7 @@ import fs from "fs";
 import nanospinner, { createSpinner } from "nanospinner";
 import figlet from "figlet";
 import gradientString from "gradient-string";
+import chalkAnimation from "chalk-animation";
 
 export class biblicalQuiz {
     constructor (
@@ -24,8 +25,14 @@ export class biblicalQuiz {
         const username = name.user.trim();
         const pathInfo = path.join('./src', 'archive.txt');
 
+        const data = fs.readFileSync(pathInfo, 'utf8');
+        if (data.split('\n').includes(username)) {
+            console.log(`${username} já está registrado! Escolha outro nome.`);
+            throw new Error("Tente novamente!");
+        };
+
         fs.appendFile(pathInfo, username + '\n', (err) => {
-            if (err) throw err;
+            if (err && username.length <= 0) return;
         });
 
         if (!username && username == "") {
@@ -33,8 +40,8 @@ export class biblicalQuiz {
             throw new Error("Tente novamente!");
         };
         
-        console.log(`Bem-vindo (a), ${username}!\n`);
-        console.log(chalk.greenBright("Agora, vamos começar...\n"));
+        console.log((`Bem-vindo (a), ${username}!\n`));
+        console.log((`Agora vamos iniciar...\n`));
 
     };
 
@@ -67,10 +74,8 @@ export class biblicalQuiz {
 
         if (decision.decisions === "Sim") { 
             
-           // setTimeout(async () => {
                 const spinner = createSpinner(`Certo! Vamos começar o quiz!\n`).start();
                 spinner.success();
-          //  }, 2000);
 
                 await this.startQuiz();
         };
@@ -90,17 +95,16 @@ export class biblicalQuiz {
          
             await this.getStarted();
 
+                    const showOptions = await inquirer.prompt([
 
-                const showOptions = await inquirer.prompt([
-
-                    {
-                        type: "list",
-                        name: "features",
-                        message: "O que você deseja fazer?",
-                        choices: ["Começar Quiz", "Sobre", "Sair"],
-                    },
-
-                ]);
+                        {
+                            type: "list",
+                            name: "features",
+                            message: "O que você deseja fazer?",
+                            choices: ["Começar Quiz", "Sobre", "Sair"],
+                        },
+    
+                    ]);
 
                 if (showOptions.features === "Começar Quiz") {
 
@@ -231,8 +235,8 @@ export class biblicalQuiz {
             answer = response [name];
 
             if (answer === correctAnswer) {
-                const spinnerAnswer = createSpinner(chalk.green(`A resposta certa era ${correctAnswer}. Você acertou!`)).start();
-                spinnerAnswer.success();
+                const spinnerRight = createSpinner(chalk.green(`A resposta certa era ${correctAnswer}. Você acertou!`)).start();
+                spinnerRight.success();
             };
 
             if (answer !== correctAnswer) {

@@ -21,6 +21,7 @@
   "dependencies": {
     "@inquirer/prompts": "^5.3.8",
     "@types/express": "^4.17.21",
+    "chalk-animation": "^2.0.3",
     "express": "^4.19.2",
     "figlet": "^1.7.0",
     "gradient-string": "^2.0.2",
