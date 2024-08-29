@@ -17,3 +17,11 @@ Abra seu terminal no VSCODE, e insira as informações na sequência abaixo:
 
 E está pronto!
 
+---------------------------------------------------------------------------------------------------
+
+This quiz was created to teach about the Bible in a fun and interactive way!
+
+For this project, I worked with deadlines and various demands. To build it, I used JavaScript, Node.js, Inquirer, and Chalk.
+
+In the future, I plan to extend this project and compile the code into TypeScript.
+
