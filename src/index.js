@@ -4,6 +4,8 @@ import chalk from "chalk";
 import path from "path";
 import fs from "fs";
 import nanospinner, { createSpinner } from "nanospinner";
+import figlet from "figlet";
+import gradientString from "gradient-string";
 
 export class biblicalQuiz {
     constructor (
@@ -124,7 +126,7 @@ export class biblicalQuiz {
 
         await this.askQuestion(
             'favoriteColor',
-            'Qual é a sua cor favorita?',
+            '1) Qual é a sua cor favorita?\n',
             ['A) Azul', 'B) Verde', 'C) Vermelho', 'D) Amarelo', 'E) Outro'],
             'A) Azul', 
             3,
@@ -132,7 +134,7 @@ export class biblicalQuiz {
 
         await this.askQuestion(
             'preferredOS',
-            'Qual é o seu sistema operacional preferido?',
+            '2) Qual é o seu sistema operacional preferido?\n',
             ['A) Windows', 'B) macOS', 'C) Linux', 'D) Outro'],
             'C) Linux',
             3,
@@ -140,7 +142,7 @@ export class biblicalQuiz {
 
         await this.askQuestion(
             'musicGenre',
-            'Qual tipo de música você mais gosta?',
+            '3) Qual tipo de música você mais gosta?\n',
             ['A) Rock', 'B) Pop', 'C) Jazz', 'D) Clássica', 'E) Eletrônica'],
             'B) Pop',
             3,
@@ -149,7 +151,7 @@ export class biblicalQuiz {
         
         await this.askQuestion(
             'hobbiesMenu',
-            'Qual é o seu hobbie favorito?',
+            '4) Qual é o seu hobbie favorito?\n',
             ['A) Futebol', 'B) Cinema', 'C) Jogar', 'D) Cantar', 'E) Outro'],
             'B) Cinema',
             3,
@@ -157,7 +159,7 @@ export class biblicalQuiz {
 
         await this.askQuestion(
             'mainChoice',
-            'Qual a sua linguagem de programação favorita?',
+            '5) Qual a sua linguagem de programação favorita?\n',
             ['A) JavaScript', 'B) Python', 'C) C++', 'D) Java', 'E) Outro'],
             'D) Java',
             3,
@@ -165,7 +167,7 @@ export class biblicalQuiz {
 
         await this.askQuestion(
             'favoriteFood',
-            'Qual é o seu prato favorito?',
+            '6) Qual é o seu prato favorito?\n',
             ['A) Macarrao', 'B) Arroz', 'C) Feijão', 'D) Carne', 'E) Outro'],
             'C) Feijão',
             3,
@@ -173,7 +175,7 @@ export class biblicalQuiz {
 
         await this.askQuestion(
             'favoriteDrink',
-            'Qual é a sua bebida favorita?',
+            '7) Qual é a sua bebida favorita?\n',
             ['A) Cerveja', 'B) Vinho', 'C) Refrigerante', 'D) Suco', 'E) Outro'],
             'E) Outro',
             3,
@@ -181,7 +183,7 @@ export class biblicalQuiz {
 
         await this.askQuestion(
             'favoriteAnimal',
-            'Qual é o seu animal favorito?',
+            '8) Qual é o seu animal favorito?\n',
             ['A) Cachorro', 'B) Gato', 'C) Cavalo', 'D) Papagaio', 'E) Outro'],
             'A) Cachorro',
             3,
@@ -189,7 +191,7 @@ export class biblicalQuiz {
 
         await this.askQuestion(
             'favoriteSport',
-            'Qual é o seu esporte favorito?',
+            '9) Qual é o seu esporte favorito?\n',
             ['A) Futebol', 'B) Volei', 'C) Basquete', 'D) Natação', 'E) Outro'],
             'E) Outro',
             3,
@@ -197,14 +199,19 @@ export class biblicalQuiz {
 
         await this.askQuestion(
             'favoriteMovie',
-            'Qual é o seu filme favorito?',
+            '10) Qual é o seu filme favorito?\n',
             ['A) Um filme', 'B) Dois filmes', 'C) Tres filmes', 'D) Quatro filmes', 'E) Outro'],
             'A) Um filme',
             3,
         ); 
 
-        const spinnerFinal = createSpinner(chalk.greenBright(`Muito bem! Você acaba de concluir o quiz! Você acertou todas as questões!\n`)).start();
-        spinnerFinal.success();
+        const msgFinal = `Conseguiu concluir o quiz!`;
+        setTimeout(() => {
+            figlet(msgFinal, (err, data) => {
+                if (err) return;
+                console.log(gradientString.pastel(data)); 
+            });
+        }, 1000);
     }
 
     async askQuestion (name, message, choices, correctAnswer, maxAttempts) {
