@@ -26,9 +26,9 @@ export class biblicalQuiz {
             if (err) throw err;
         });
 
-        if (!username && username === "") {
+        if (!username && username == "") {
             console.log("Por favor, insira um nome válido!\n");
-            return false;
+            throw new Error("Tente novamente!");
         };
         
         console.log(`Bem-vindo (a), ${username}!\n`);
@@ -125,24 +125,24 @@ export class biblicalQuiz {
         await this.askQuestion(
             'favoriteColor',
             'Qual é a sua cor favorita?',
-            ['Azul', 'Verde', 'Vermelho', 'Amarelo', 'Outro'],
-            'Azul', 
+            ['A) Azul', 'B) Verde', 'C) Vermelho', 'D) Amarelo', 'E) Outro'],
+            'A) Azul', 
             3,
         );
 
         await this.askQuestion(
             'preferredOS',
             'Qual é o seu sistema operacional preferido?',
-            ['Windows', 'macOS', 'Linux', 'Outro'],
-            'Linux',
+            ['A) Windows', 'B) macOS', 'C) Linux', 'D) Outro'],
+            'C) Linux',
             3,
         );
 
         await this.askQuestion(
             'musicGenre',
             'Qual tipo de música você mais gosta?',
-            ['Rock', 'Pop', 'Jazz', 'Clássica', 'Eletrônica'],
-            'Pop',
+            ['A) Rock', 'B) Pop', 'C) Jazz', 'D) Clássica', 'E) Eletrônica'],
+            'B) Pop',
             3,
         );
 
@@ -150,56 +150,56 @@ export class biblicalQuiz {
         await this.askQuestion(
             'hobbiesMenu',
             'Qual é o seu hobbie favorito?',
-            ['Futebol', 'Cinema', 'Jogar', 'Cantar', 'Outro'],
-            'Cinema',
+            ['A) Futebol', 'B) Cinema', 'C) Jogar', 'D) Cantar', 'E) Outro'],
+            'B) Cinema',
             3,
         );
 
         await this.askQuestion(
             'mainChoice',
             'Qual a sua linguagem de programação favorita?',
-            ['JavaScript', 'Python', 'C++', 'Java', 'Outro'],
-            'Java',
+            ['A) JavaScript', 'B) Python', 'C) C++', 'D) Java', 'E) Outro'],
+            'D) Java',
             3,
         );
 
         await this.askQuestion(
             'favoriteFood',
             'Qual é o seu prato favorito?',
-            ['Macarrao', 'Arroz', 'Feijão', 'Carne', 'Outro'],
-            'Feijão',
+            ['A) Macarrao', 'B) Arroz', 'C) Feijão', 'D) Carne', 'E) Outro'],
+            'C) Feijão',
             3,
         );
 
         await this.askQuestion(
             'favoriteDrink',
             'Qual é a sua bebida favorita?',
-            ['Cerveja', 'Vinho', 'Refrigerante', 'Suco', 'Outro'],
-            'Outro',
+            ['A) Cerveja', 'B) Vinho', 'C) Refrigerante', 'D) Suco', 'E) Outro'],
+            'E) Outro',
             3,
         );
 
         await this.askQuestion(
             'favoriteAnimal',
             'Qual é o seu animal favorito?',
-            ['Cachorro', 'Gato', 'Cavalo', 'Papagaio', 'Outro'],
-            'Cachorro',
+            ['A) Cachorro', 'B) Gato', 'C) Cavalo', 'D) Papagaio', 'E) Outro'],
+            'A) Cachorro',
             3,
         );
 
         await this.askQuestion(
             'favoriteSport',
             'Qual é o seu esporte favorito?',
-            ['Futebol', 'Volei', 'Basquete', 'Natação', 'Outro'],
-            'Outro',
+            ['A) Futebol', 'B) Volei', 'C) Basquete', 'D) Natação', 'E) Outro'],
+            'E) Outro',
             3,
         );
 
         await this.askQuestion(
             'favoriteMovie',
             'Qual é o seu filme favorito?',
-            ['Um filme', 'Dois filmes', 'Tres filmes', 'Quatro filmes', 'Outro'],
-            'Um filme',
+            ['A) Um filme', 'B) Dois filmes', 'C) Tres filmes', 'D) Quatro filmes', 'E) Outro'],
+            'A) Um filme',
             3,
         ); 
 
@@ -222,6 +222,11 @@ export class biblicalQuiz {
             ]);
 
             answer = response [name];
+
+            if (answer === correctAnswer) {
+                const spinnerAnswer = createSpinner(chalk.green(`A resposta certa era ${correctAnswer}. Você acertou!`)).start();
+                spinnerAnswer.success();
+            };
 
             if (answer !== correctAnswer) {
 
