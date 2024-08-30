@@ -2,10 +2,12 @@ import { input } from "@inquirer/prompts"; // Você responder com texto
 import { select } from "@inquirer/prompts"; // Você deve selecionar uma opção
 import { confirm } from "@inquirer/prompts"; // Confirmar com sim ou não (não sei se vou usar)
 import { createSpinner } from "nanospinner";
+// import { Choice, Separator } from "@inquirer/prompts";
 import path from "path";
 import fs, { readFileSync } from "fs";
 
-export class creatingQuiz {
+export class creatingQuiz <T> {
+
     async getStarted (): Promise <void> {
         const name: string = await input({
             message: "Qual é o seu nome de usuário? \n",
@@ -227,6 +229,9 @@ export class creatingQuiz {
 
       );
 
+      console.log("Quiz concluído!\n");
+      process.exit();
+
     };
 
     async questionsReceptor (
@@ -238,6 +243,18 @@ export class creatingQuiz {
       maxAttempts: number
     
     ): Promise <void> {
+        let attempts = 0;
+        let answer;
+        let limit = maxAttempts;
+
+      do {
+
+        const response = await select({
+            message: msg,
+            choices: choices
+        });
+
+      } while (answer !== correctAnswer);
 
     };
 
