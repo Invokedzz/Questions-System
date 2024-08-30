@@ -1,12 +1,4 @@
-interface Separator {
-    type: 'separator';
-    label: string;
-  };
-  
-interface Choice<T> {
-    type: 'choice';
-    value: T;
-    label: string;
-}
+import creatingQuiz from "./index";
 
-export { Separator, Choice };
+const startProject = new creatingQuiz();
+startProject.allFeatures();

@@ -1,9 +1,9 @@
-import { input } from "@inquirer/prompts"; // Você responder com texto
-import { select } from "@inquirer/prompts"; // Você deve selecionar uma opção
+import { input } from "@inquirer/prompts";
+import { select } from "@inquirer/prompts";
+import { confirm } from "@inquirer/prompts";
 import { createSpinner } from "nanospinner";
 import path from "path";
 import fs, { readFileSync } from "fs";
-import { Separator, Choice } from "./interfaces";
 
 export class creatingQuiz  {
 
@@ -328,7 +328,12 @@ await this.questionsReceptor(
           if (limit === attempts) {
         
             console.log(`Você ultrapassou o número de tentativas. Tente novamente.\n`)
-            await this.getStarted();
+            const tryAgain = await confirm({
+                message: "Gostaria de tentar novamente?",
+            });
+
+            if (tryAgain) await this.startQuiz();
+            process.exit();
     
           };
 
@@ -339,7 +344,5 @@ await this.questionsReceptor(
     }; 
 }
 
-const startClass = new creatingQuiz();
-startClass.allFeatures();
 
-export default 1;
+export default creatingQuiz;
