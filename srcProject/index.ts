@@ -1,15 +1,23 @@
-import inquirer from 'inquirer';
+import { input } from "@inquirer/prompts"; // Você responder com texto
+import { select } from "@inquirer/prompts"; // Você deve selecionar uma opção
+import { confirm } from "@inquirer/prompts"; // Confirmar com sim ou não (não sei se vou usar)
+import { createSpinner } from "nanospinner";
+import path from "path";
+import fs from "fs";
+//import chalk from "chalk";
 
-async function askQuestions() {
-  const questions = [
-    {
-      type: 'input',
-      name: 'name',
-      message: 'Qual é o seu nome?',
-    },
-  ];
+export class creatingQuiz {
+    async getStarted (): Promise <void> {
+        const name = await input({
+            message: "Qual é o seu nome de usuário? \n",
+        });
 
+        console.log(`Bem-vindo (a), ${name}!\n`);
 
-}
+    };
+};
 
-askQuestions();
+const startClass = new creatingQuiz();
+startClass.getStarted();
+
+export default 1;
