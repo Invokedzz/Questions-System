@@ -3,21 +3,122 @@ import { select } from "@inquirer/prompts"; // Você deve selecionar uma opção
 import { confirm } from "@inquirer/prompts"; // Confirmar com sim ou não (não sei se vou usar)
 import { createSpinner } from "nanospinner";
 import path from "path";
-import fs from "fs";
+import fs, { readFileSync } from "fs";
 //import chalk from "chalk";
 
 export class creatingQuiz {
     async getStarted (): Promise <void> {
-        const name = await input({
+        const name: string = await input({
             message: "Qual é o seu nome de usuário? \n",
         });
 
+        const username = name.trim();
+        const pathInformation = path.join('./srcProject', 'archiveTS.txt');
+        const data = readFileSync(pathInformation, 'utf8');
+
+        if (data.split('\n').includes(username)) {
+            console.log(`${username} já está registrado! Tente outro nome!`);
+            throw new Error ("Tente novamente!");
+        };
+
+        fs.appendFile(pathInformation, username + '\n', (err: Error | null): void => {
+            if (err && username.length <= 0) return;
+        });
+
+        if (!username && username === "") {
+            console.log(`Por favor, insira um nome válido!\n'`);
+            throw new Error("Tente novamente!");
+        };
+
         console.log(`Bem-vindo (a), ${name}!\n`);
+        console.log(`Agora, vamos iniciar...\n`);
 
     };
-};
+
+    async aboutQuiz (): Promise <void> {
+        
+      setTimeout((): void => {
+
+            console.log("O objetivo desse quiz é o ensino da Bíblia para os mais jovens. De uma maneira lúdica e divertida!");
+            console.log("Você pode apoiar esse projeto em: https://github.com/Invokedzz/");
+
+        }, 1000);
+
+        setTimeout(async (): Promise <void> => {
+
+          await this.userDecision();
+        
+        }, 4000);
+
+    };
+
+    async userDecision (): Promise <void> {
+        const choice = await select({
+            message: "Ainda gostaria de jogar o quiz?",
+            choices: [
+              {name: "Sim", value: "start"},
+              {name: "Não", value: "exit"},
+            ],
+        });
+
+        if (choice === "start") {
+            console.log(`Certo, vamos iniciar o quiz.`);
+            await this.startQuiz();
+        };
+
+        if (choice === "info") await this.aboutQuiz();
+        
+        if (choice === "exit") {
+            await this.exitQuiz();
+            return;
+        };
+
+    };
+
+    async exitQuiz (): Promise <void> {
+
+        console.log("Obrigado pelo seu tempo!");
+        process.exit();
+    
+    };
+
+    async allFeatures (): Promise <void> {
+        await this.getStarted();
+
+        const displayOptions = await select({
+            message: "O que você deseja fazer?",
+            choices: [
+              {name: "Começar Quiz", value: "startQuiz"},
+              {name: "Sobre", value: "information"},
+              {name: "Sair", value: "exit"},
+            ],
+        });
+
+        if (displayOptions === "startQuiz") {
+            setTimeout(async (): Promise <void> => {
+
+              console.log("Tudo bem! Iniciando quiz...");
+              await this.startQuiz();
+
+            });
+        };
+
+        if (displayOptions === "information") await this.aboutQuiz();
+        
+        if (displayOptions === "exit") {
+            console.log("Obrigado pelo seu tempo!");
+            process.exit();
+        };
+
+    };
+
+    async startQuiz () {
+        console.log("Ainda estou aqui...");
+    };
+
+}
 
 const startClass = new creatingQuiz();
-startClass.getStarted();
+startClass.allFeatures();
 
 export default 1;
