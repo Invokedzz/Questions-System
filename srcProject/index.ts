@@ -2,15 +2,40 @@ import { input } from "@inquirer/prompts";
 import { select } from "@inquirer/prompts";
 import { confirm } from "@inquirer/prompts";
 import { createSpinner } from "nanospinner";
+import gradient from "gradient-string";
+import figlet from "figlet";
+import "colorts/lib/string";
 import path from "path";
 import fs, { readFileSync } from "fs";
 
 export class creatingQuiz  {
 
+    async mainTitle (): Promise <void> {
+
+      return new Promise ((resolve) => {
+        const startFiglet = "Novo Testamento";
+        figlet(startFiglet, (err: Error | null, data) => {
+
+            if (!err) {
+              console.log(gradient.pastel.multiline(data));
+              resolve();
+              return;
+            };
+
+            throw new Error ("Something went wrong. Try again.");
+            
+      });
+
+      });
+    }
+
     async getStarted (): Promise <void> {
+
+        await this.mainTitle();
+
         const name: string = await input({
-            message: "Qual é o seu nome de usuário? \n",
-        });
+          message: "Qual é o seu nome de usuário? \n",
+      });
 
         const username = name.trim();
         const pathInformation = path.join('./srcProject', 'archiveTS.txt');
@@ -30,8 +55,9 @@ export class creatingQuiz  {
             throw new Error("Tente novamente!");
         };
 
-        console.log(`Bem-vindo (a), ${name}!\n`);
-        console.log(`Agora, vamos iniciar...\n`);
+        const spinnerShowcase = createSpinner(`Bem-vindo (a), ${username}!\n`.green).start();
+        spinnerShowcase.success();
+        console.log(`Agora, vamos iniciar...\n`.blue);
 
     };
 
@@ -39,8 +65,8 @@ export class creatingQuiz  {
         
       setTimeout((): void => {
 
-            console.log("O objetivo desse quiz é o ensino da Bíblia para os mais jovens. De uma maneira lúdica e divertida!\n");
-            console.log("Você pode apoiar esse projeto em: https://github.com/Invokedzz/\n");
+            console.log("O objetivo desse quiz é o ensino da Bíblia para os mais jovens. De uma maneira lúdica e divertida!\n".blue);
+            console.log("Você pode apoiar esse projeto em: https://github.com/Invokedzz/\n".blue.underline);
 
         }, 1000);
 
@@ -93,7 +119,7 @@ export class creatingQuiz  {
 
         const displayOptions = await select({
             
-          message: "O que você deseja fazer?\n",
+          message: "O que você deseja fazer? (Utilize o botão ENTER para selecionar uma opção).\n",
             choices: [
               
               {name: "Começar Quiz",
@@ -315,19 +341,27 @@ await this.questionsReceptor(
 
         answer = questionsOptions;
 
-        if (answer === correctAnswer) console.log(`A resposta certa era ${correctAnswer}. Acertou!\n`);
+        if (answer === correctAnswer) {
+
+          const correctSpinner = createSpinner(`A resposta certa era ${correctAnswer}. Acertou!`.green).start();
+          correctSpinner.success();
+
+        }
 
         if (answer !== correctAnswer) {
 
           if (attempts < limit) {
+
             attempts++;
-            console.log(`Resposta incorreta! Tente novamente.\n`);
-            console.log(`Tentativas restantes: ${limit - attempts}\n`);
+            console.log(`Resposta incorreta! Tente novamente.\n`.red);
+            console.log(`Tentativas restantes: ${limit - attempts}\n`.yellow.bold);
+
           };
 
           if (limit === attempts) {
-        
-            console.log(`Você ultrapassou o número de tentativas. Tente novamente.\n`)
+
+            const createErrorSpinner = createSpinner(`Você ultrapassou o número de tentativas. Tente novamente.\n`.red).start();
+            createErrorSpinner.error();
             const tryAgain = await confirm({
                 message: "Gostaria de tentar novamente?",
             });
