@@ -1,11 +1,19 @@
 import { input } from "@inquirer/prompts";
+
 import { select } from "@inquirer/prompts";
+
 import { confirm } from "@inquirer/prompts";
+
 import { createSpinner } from "nanospinner";
+
 import gradient from "gradient-string";
+
 import figlet from "figlet";
+
 import "colorts/lib/string";
+
 import path from "path";
+
 import fs, { readFileSync } from "fs";
 
 export class creatingQuiz  {
