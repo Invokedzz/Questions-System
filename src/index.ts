@@ -16,6 +16,8 @@ import path from "path";
 
 import fs, { readFileSync } from "fs";
 
+import { websiteGenerator } from "./server/website";
+
 export class creatingQuiz  {
 
     async mainTitle (): Promise <void> {
@@ -167,7 +169,22 @@ export class creatingQuiz  {
 
     async startWebsite (): Promise <void> {
 
-    }
+      return new Promise ((resolve) => {
+
+        try {
+
+          const loadWebsite = new websiteGenerator();
+          loadWebsite.listen();
+          resolve();
+
+        } catch (err) {
+          console.error(err);
+          throw new Error("Something went wrong! Try again.");
+        };
+
+      });
+
+    };
 
     async startQuiz (): Promise <void> {
         
