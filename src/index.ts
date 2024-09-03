@@ -155,6 +155,8 @@ export class creatingQuiz  {
         };
 
         if (displayOptions === "information") await this.aboutQuiz();
+
+        if (displayOptions === "accessurl") await this.startWebsite();
         
         if (displayOptions === "exit") {
             console.log("Obrigado pelo seu tempo!\n");
@@ -162,6 +164,10 @@ export class creatingQuiz  {
         };
 
     };
+
+    async startWebsite (): Promise <void> {
+
+    }
 
     async startQuiz (): Promise <void> {
         
