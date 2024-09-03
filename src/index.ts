@@ -173,9 +173,24 @@ export class creatingQuiz  {
 
         try {
 
-          const loadWebsite = new websiteGenerator();
-          loadWebsite.listen();
-          resolve();
+          setTimeout(async (): Promise <void> => {
+            
+            const loadWebsite = new websiteGenerator();
+            loadWebsite.listen();
+            resolve();
+
+          }, 1000);
+
+          setTimeout(async (): Promise <void> => {
+            
+            const areuThere = await confirm({
+              message: "Ainda gostaria de jogar o quiz?\n",
+            });
+
+            if (areuThere) await this.startQuiz();
+            process.exit();
+
+          }, 2500);
 
         } catch (err) {
           console.error(err);
