@@ -14,6 +14,8 @@ application.engine("handlebars", engine({
 application.set("view engine", "handlebars");
 application.set("views", path.join(__dirname, "../views"));
 
+application.use(express.static(path.join(__dirname, "../views/styles")));
+
 export class websiteGenerator {
 
     private startEngines (): void {
