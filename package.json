@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node src/index.ts",
-    "dev": "ts-node ./srcProject/interfaces.ts"
+    "dev": "ts-node ./src/interfaces.ts"
   },
   "keywords": [],
   "author": "",
@@ -28,6 +28,7 @@
     "chalk-animation": "^2.0.3",
     "colorts": "^0.1.63",
     "express": "^4.19.2",
+    "express-handlebars": "^8.0.1",
     "figlet": "^1.7.0",
     "gradient-string": "^2.0.2",
     "inquirer": "^10.1.8",
