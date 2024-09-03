@@ -46,7 +46,7 @@ export class creatingQuiz  {
       });
 
         const username = name.trim();
-        const pathInformation = path.join('./srcProject', 'archiveTS.txt');
+        const pathInformation = path.join('./src', 'archiveTS.txt');
         const data = readFileSync(pathInformation, 'utf8');
 
         if (data.split('\n').includes(username)) {
@@ -135,6 +135,9 @@ export class creatingQuiz  {
 
               {name: "Sobre",
               value: "information"},
+
+              {name: "Envie um Feedback", 
+              value: "accessurl"},
 
               {name: "Sair", 
               value: "exit"},

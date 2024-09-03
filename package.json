@@ -2,11 +2,11 @@
   "name": "biblical-quiz",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
+  "main": "interfaces.ts",
   "type": "commonjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node src/index.ts",
+    "start": "ts-node src/interfaces.ts",
     "dev": "ts-node ./src/interfaces.ts"
   },
   "keywords": [],
