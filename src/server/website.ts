@@ -1,6 +1,8 @@
 import path from "path";
 import express from "express";
 import { engine } from "express-handlebars";
+import { accesspage } from "./routes";
+import { receivedInfo } from "./routes";
 
 const application = express();
 const port = process.env.PORT || 3000;
@@ -22,14 +24,20 @@ export class websiteGenerator {
     };
 
     private serverGETmethod (): void {
-
+        application.get('/', accesspage);
     };
 
     private serverPOSTmethod (): void {
 
+        this.startEngines();
+        application.post('/access/feedback', receivedInfo);
+
     };
 
     public listen (): void {
+
+        this.serverGETmethod();
+        this.serverPOSTmethod();
 
         application.listen(port, (): void => {
             console.log(`The server is ready: http://localhost:${port}`);
@@ -39,3 +47,5 @@ export class websiteGenerator {
 
 }
 
+const startAll = new websiteGenerator();
+startAll.listen();

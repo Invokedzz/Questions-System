@@ -5,5 +5,8 @@ export const accesspage = (req: Request, res: Response): void => {
 };
 
 export const receivedInfo = (req: Request, res: Response): void => {
+
+    const user = req.body.user;
+    const username = req.body.username;
     
 };
