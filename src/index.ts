@@ -179,7 +179,7 @@ export class creatingQuiz  {
             loadWebsite.listen();
             resolve();
 
-          }, 1000);
+          }, 500);
 
           setTimeout(async (): Promise <void> => {
             
@@ -190,7 +190,7 @@ export class creatingQuiz  {
             if (areuThere) await this.startQuiz();
             process.exit();
 
-          }, 2500);
+          }, 5000);
 
         } catch (err) {
           console.error(err);

@@ -14,7 +14,6 @@ application.engine("handlebars", engine({
 application.set("view engine", "handlebars");
 application.set("views", path.join(__dirname, "../views"));
 
-application.use(express.static(path.join(__dirname, "../views/styles")));
 
 export class websiteGenerator {
 
@@ -41,8 +40,24 @@ export class websiteGenerator {
         this.serverGETmethod();
         this.serverPOSTmethod();
 
-        application.listen(port, (): void => {
-            console.log(`The server is ready: http://localhost:${port}`);
+        application.listen(port, async (): Promise <void> => {
+
+            try {
+
+                console.log(`Preparando a inicialização do servidor. Por favor aguarde...`);
+
+                setTimeout(async (): Promise <void> => {
+                    const { default: open } = await import ("open");
+                    await open(`http://localhost:${port}`);
+                }, 3500);
+
+            } catch (e) {
+
+                console.error(e);
+                throw new Error("Something went wrong... Try again.");
+
+            };
+
         });
 
     };
