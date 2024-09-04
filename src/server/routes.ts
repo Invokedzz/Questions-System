@@ -1,5 +1,13 @@
 import { Request, Response } from "express";
 
+export const homepage = (req: Request, res: Response): void => {
+    res.render("homepage");
+};
+
+export const aboutpage = (req: Request, res: Response): void => {
+    res.render("aboutpage");
+};
+
 export const accesspage = (req: Request, res: Response): void => {
     res.render("accesspage")
 };

@@ -1,7 +1,17 @@
 import path from "path";
+
 import express from "express";
+
+import "colorts/lib/string";
+
 import { engine } from "express-handlebars";
+
+import { homepage } from "./routes";
+
+import { aboutpage } from "./routes";
+
 import { accesspage } from "./routes";
+
 import { receivedInfo } from "./routes";
 
 const application = express();
@@ -25,7 +35,11 @@ export class websiteGenerator {
     };
 
     private serverGETmethod (): void {
-        application.get('/', accesspage);
+
+        application.get('/', homepage);
+        application.get('/about', aboutpage);
+        application.get('/access', accesspage);
+        
     };
 
     private serverPOSTmethod (): void {
