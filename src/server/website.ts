@@ -24,6 +24,8 @@ application.engine("handlebars", engine({
 application.set("view engine", "handlebars");
 application.set("views", path.join(__dirname, "../views"));
 
+application.use(express.static('public'));
+
 
 export class websiteGenerator {
 
@@ -39,7 +41,7 @@ export class websiteGenerator {
         application.get('/', homepage);
         application.get('/about', aboutpage);
         application.get('/access', accesspage);
-        
+
     };
 
     private serverPOSTmethod (): void {
