@@ -138,7 +138,7 @@ export class creatingQuiz  {
               {name: "Sobre",
               value: "information"},
 
-              {name: "Envie um Feedback", 
+              {name: "Acesse nossa página oficial", 
               value: "accessurl"},
 
               {name: "Sair", 

@@ -18,6 +18,6 @@ export const receivedInfo = (req: Request, res: Response): void => {
     const username = req.body.username;
 
     if (user && username) res.render("receivedInfo", {user, username});
-    return;
+
 
 };
