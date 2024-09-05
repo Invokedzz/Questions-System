@@ -7,7 +7,7 @@ import validator from "validator";
 const pool = mysql.createPool({
     host: "localhost",
     user: "Invoked",
-    password: "sss38c197333sss38c197333@F38c1973",
+    password: "",
     database: "questionsystem",
     waitForConnections: true,
     connectionLimit: 10,
@@ -44,11 +44,12 @@ export const receivedInfo = async (req: Request, res: Response): Promise <void |
     };
 
     try {
-        // Inserção no banco de dados
+
         const connection = await pool.getConnection();
         try {
             const insertSQL = 'INSERT INTO users (name, email) VALUES (?, ?)';
             await connection.query(insertSQL, [name, email]);
+
         } finally {
             connection.release();
         }
