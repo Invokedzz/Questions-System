@@ -21,12 +21,6 @@ import { receivedInfo } from "./routes";
 const application = express();
 const port = process.env.PORT || 3000;
 
-mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "root",
-    database: "questionsystem",
-});
 
 application.engine("handlebars", engine({
     defaultLayout: "main",
