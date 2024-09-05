@@ -8,23 +8,7 @@
 </head>
 <body>
 
-    <div class="headercontainer">
-        <header class="universalheader">
-            <div class="block">
-                <h1 class="textwelcome">Novo Testamento</h1>
-            </div>
-            <ul>
-                <a href="/">
-                    <li>Home</li>
-                </a>
-                <a href="/about"><li>Sobre</li></a>
-                <a href="/access">
-                    <li>Nos mande um Feedback</li>
-                </a>
-            </ul>
-        </header>
-        
-    </div>
+    {{> partials}}
 
     <article>
         <div class="chatblock">
@@ -42,11 +26,7 @@
         </div>
     </article>
 
-    <footer class="backfooter">
-        <p class="textfooter">
-            Samuel Nóbrega - Todos os direitos reservados
-        </p>
-    </footer>
+    {{> footer}}
 
     
 </body>
