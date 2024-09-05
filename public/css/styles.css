@@ -1,3 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: DM Sans;
+    text-align: center;
+}
+
+body {
+    background-size: cover;
+    background-attachment: fixed;
+    background-color:#e2e7efc8;;
+}
+
+header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 40px 0;
+}
+
+.headercontainer {
+    background-color:#a0adbfec;;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    transition: 0.6s all;
+}
+
+a:hover {
+    color: rgb(124, 187, 242);
+}
+
+ul {
+    display: flex;
+    list-style: none;
+}
+
+li {
+    margin: 0 20px;
+}
+
+h1 {
+    margin-bottom: 10px;
+    font-size: 40px;
+}
+
+.textmain {
+    padding-bottom: 60px;
+}
+
+span {
+    text-decoration: underline;
+    color: rgb(129, 209, 236);
+}
+
 p {
-    color: red;
+    font-size: 20px;
+    max-width: 70%;
+    margin-top: 15px;
+    margin-left: 15%;
+}
+
+article {
+    background-color: #fff;
+    max-width: 90%;
+    height: 90vh;
+    margin: auto;
+    margin-top: 50px;
+    padding: 5rem 0;
+    border-radius: 10px;
+    box-shadow: 0.5px 0.3px 0.5px rgba(0, 0, 0, 0.141);
+}
+
+.backfooter {
+    background-color: #000;
+    height: 7vh;
+    margin-top: 10px;
+    text-align: center;
+    color: #fff;
+}
+
+.feedbacktext {
+    padding-bottom: 5%;
+}
+
+.textfooter {
+    padding-top: 1rem;
+}
+
+.feedbackpost {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.feedbackpost input[type="text"],
+.feedbackpost input[type="email"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.feedbackpost .messagebox {
+    height: 100px;
+    resize: vertical;
+}
+
+.feedbackpost button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.feedbackpost button:hover {
+    background-color: #0056b3;
 }

@@ -1,10 +1,59 @@
-<p>Bem-vindo (a) ao site do Panorama do Novo Testamento!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
 
-<form action="/access/feedback" method="POST">
+    <div class="headercontainer">
+        <header class="universalheader">
+            <div class="block">
+                <h1>Novo Testamento</h1>
+            </div>
+            <ul>
+                <a href="/">
+                    <li>Home</li>
+                </a>
+                <a href="/about"><li>Sobre</li></a>
+                <a href="/access">
+                    <li>Nos mande um Feedback</li>
+                </a>
+            </ul>
+        </header>
+        
+    </div>
 
-    <input type="text" name="user">
-    <input type="text" name="username">
+    <article>
+        <div class="chatblock">
+    
+            <p class="feedbacktext">Para nos mandar um feedback, preencha as informações abaixo: </p>
 
-    <button type="submit">Enviar</button>
+            <form action="/access/feedback" method="POST" class="feedbackpost">
 
-</form>
+                <input type="text" name="username" class="usernamebox" placeholder="Nome:">
+
+                <input type="email" name="email" class="emailbox" placeholder="Email:">
+
+                <input type="text" name="message" class="messagebox" placeholder="Mensagem:">
+
+               <button type="submit">Enviar</button>
+
+            </form>
+    
+    
+        </div>
+    </article>
+
+    <footer class="backfooter">
+
+        <p class="textfooter">
+            Samuel Nóbrega - Todos os direitos reservados
+        </p>
+
+    </footer>
+
+    
+</body>
+</html>
