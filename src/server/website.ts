@@ -2,6 +2,8 @@ import path from "path";
 
 import express from "express";
 
+import nodemailer from "nodemailer";
+
 import "colorts/lib/string";
 
 import { engine } from "express-handlebars";
@@ -60,7 +62,7 @@ export class websiteGenerator {
 
             try {
 
-                console.log(`Preparando a inicialização do servidor. Por favor aguarde...`);
+                console.log(`Preparando a inicialização do servidor. Por favor aguarde...`.yellow.bold);
 
                 setTimeout(async (): Promise <void> => {
                     const { default: open } = await import ("open");
@@ -70,7 +72,7 @@ export class websiteGenerator {
             } catch (e) {
 
                 console.error(e);
-                throw new Error("Something went wrong... Try again.");
+                throw new Error("Something went wrong... Try again.".red);
 
             };
 
