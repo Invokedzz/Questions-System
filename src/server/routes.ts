@@ -21,7 +21,7 @@ export const receivedInfo = (req: Request, res: Response): boolean => {
     const username: string = req.body.username;
     const message = req.body.message;
 
-    if (!validator.isEmail(email) && username.length <= 0) {
+    if (!validator.isEmail(email) && username.trim().length <= 0) {
         res.render("receivedInfo", {error: "Por favor, insira um email e um nome de usuário!"});
         return verifyValues;
     };

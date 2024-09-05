@@ -23,13 +23,17 @@ export class creatingQuiz  {
     async mainTitle (): Promise <void> {
 
       return new Promise ((resolve) => {
+
         const startFiglet = "Novo Testamento";
-        figlet(startFiglet, (err: Error | null, data) => {
+
+        figlet(startFiglet, (err: Error | null, data: string | undefined) => {
 
             if (!err) {
+
               console.log(gradient.pastel.multiline(data));
               resolve();
               return;
+            
             };
 
             throw new Error ("Something went wrong. Try again.");
@@ -363,7 +367,28 @@ await this.questionsReceptor(
 
   );
 
-      console.log("Quiz concluído!\n");
+      return new Promise ((resolve) => {
+
+          const endFiglet = "Quiz concluido!\n";
+
+          figlet(endFiglet, (err: Error | null, data: string | undefined) => {
+              
+            if (!err) {
+
+                setTimeout(async (): Promise <void> => {
+                  
+                  console.log(gradient.pastel.multiline(data));
+                  resolve();
+                  return;
+
+                }, 1000);
+
+              };
+
+              throw new Error ("Something went wrong. Try again.");
+
+          });
+      });
 
     };
 
