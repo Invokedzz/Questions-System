@@ -16,6 +16,7 @@
     "@types/figlet": "^1.5.8",
     "@types/gradient-string": "^1.1.6",
     "@types/inquirer": "^9.0.7",
+    "@types/mysql": "^2.15.26",
     "@types/node": "^22.5.0",
     "@types/nodemailer": "^6.4.15",
     "@types/validator": "^13.12.1",
@@ -36,6 +37,7 @@
     "figlet": "^1.7.0",
     "gradient-string": "^2.0.2",
     "inquirer": "^10.1.8",
+    "mysql": "^2.18.1",
     "nanospinner": "^1.1.0",
     "open": "^10.1.0",
     "typescript": "^5.5.4"
