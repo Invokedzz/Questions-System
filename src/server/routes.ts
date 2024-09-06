@@ -4,16 +4,20 @@ import mysql from "mysql2/promise";
 
 import nodemailer from "nodemailer";
 
-import dotenv from "dotenv";
+import * as dotenv from "dotenv";
 
 import validator from "validator";
 
-dotenv.config();
+dotenv.config({
+    path: __dirname + '/file.env' });
+
+const userKey = process.env.SQL_USER;
+const passwordKey = process.env.SQL_PASSWORD;
 
 const pool = mysql.createPool({
     host: "localhost",
-    user: process.env.SQL_USER,
-    password: process.env.SQL_PASSWORD,
+    user: userKey,
+    password: passwordKey,
     database: "questionsystem",
     waitForConnections: true,
     connectionLimit: 10,
@@ -75,4 +79,3 @@ export const receivedInfo = async (req: Request, res: Response): Promise <void |
     }
 
 };
-
