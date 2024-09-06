@@ -10,13 +10,22 @@
     
     {{> partials}}
 
-    <!--Vai pro partials-->
-
     <article>
         <div class="chatblock">
     
             
-    
+    {{#if verifyMessage}}
+
+    <p>Insira uma mensagem válida! Ou seja, com mais de dez caractéres para o seu envio ser bem sucedido!</p>
+
+    {{else}}
+
+    <p>
+        Parabéns {{user}}! Sua mensagem foi enviada com sucesso!
+    </p>
+
+    {{/if}}
+
     
         </div>
     </article>

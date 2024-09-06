@@ -28,19 +28,21 @@ export const accesspage = (req: Request, res: Response): void => {
 
 export const receivedInfo = async (req: Request, res: Response): Promise <void | boolean> => {
 
-    let verifyValues = false;
+    let verifyMessage = false;
     let email: string = req.body.email;
     const name: string = req.body.username;
     const message: string = req.body.message;
 
     if (!validator.isEmail(email) && name.trim().length <= 0) {
-        res.render("receivedInfo", {error: "Por favor, insira um email e um nome de usuário!"});
-        return verifyValues;
+        verifyMessage = true;
+        res.render("receivedInfo", {verifyMessage});
+        return verifyMessage;
     };
 
     if (message.length <= 10 && !message) {
-        res.render("receivedInfo", {errormsg: "Por favor, insira uma mensagem válida!"});
-        return verifyValues;
+        verifyMessage = true;
+        res.render("receivedInfo", {verifyMessage});
+        return verifyMessage;
     };
 
     try {
