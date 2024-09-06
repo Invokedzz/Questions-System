@@ -59,8 +59,8 @@ export const receivedInfo = async (req: Request, res: Response): Promise <void |
         
         try {
 
-            const insertSQL = 'INSERT INTO users (name, email) VALUES (?, ?)';
-            await connection.query(insertSQL, [name, email]);
+            const insertSQL = 'INSERT INTO users (name, email, message) VALUES (?, ?, ?)';
+            await connection.query(insertSQL, [name, email, message]);
 
         } finally {
             connection.release();
