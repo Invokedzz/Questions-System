@@ -2,10 +2,6 @@ import path from "path";
 
 import express from "express";
 
-import nodemailer from "nodemailer";
-
-import mysql from "mysql";
-
 import "colorts/lib/string";
 
 import { engine } from "express-handlebars";

@@ -2,12 +2,18 @@ import { Request, Response } from "express";
 
 import mysql from "mysql2/promise";
 
+import nodemailer from "nodemailer";
+
+import dotenv from "dotenv";
+
 import validator from "validator";
+
+dotenv.config();
 
 const pool = mysql.createPool({
     host: "localhost",
-    user: "Invoked",
-    password: "",
+    user: process.env.SQL_USER,
+    password: process.env.SQL_PASSWORD,
     database: "questionsystem",
     waitForConnections: true,
     connectionLimit: 10,
@@ -27,6 +33,8 @@ export const accesspage = (req: Request, res: Response): void => {
 };
 
 export const receivedInfo = async (req: Request, res: Response): Promise <void | boolean> => {
+
+    const transporter = nodemailer.createTransport
 
     let verifyMessage = false;
     let email: string = req.body.email;
@@ -67,3 +75,4 @@ export const receivedInfo = async (req: Request, res: Response): Promise <void |
     }
 
 };
+
