@@ -2,8 +2,6 @@ import { Request, Response } from "express";
 
 import mysql from "mysql2/promise";
 
-import nodemailer from "nodemailer";
-
 import * as dotenv from "dotenv";
 
 import validator from "validator";
@@ -37,8 +35,6 @@ export const accesspage = (req: Request, res: Response): void => {
 };
 
 export const receivedInfo = async (req: Request, res: Response): Promise <void | boolean> => {
-
-    const transporter = nodemailer.createTransport
 
     let verifyMessage = false;
     let email: string = req.body.email;
@@ -75,7 +71,7 @@ export const receivedInfo = async (req: Request, res: Response): Promise <void |
 
     } catch (error) {
         console.error("Erro ao acessar o banco de dados:", error);
-        res.render("receivedInfo", { error: "Ocorreu um erro ao processar sua solicitação." });
-    }
+        throw new Error("Something went wrong with the database. Try again.");
+    };
 
 };
