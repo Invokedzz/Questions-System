@@ -30,10 +30,10 @@ export const receivedInfo = async (req: Request, res: Response): Promise <void |
 
     let verifyMessage = false;
     let email: string = req.body.email;
-    const name: string = req.body.username;
+    const name: string = req.body.name;
     const message: string = req.body.message;
 
-    if (!validator.isEmail(email) && name.trim().length <= 0) {
+    if (!validator.isEmail(email) && !name) {
         verifyMessage = true;
         res.render("receivedInfo", {verifyMessage});
         return verifyMessage;
@@ -48,7 +48,9 @@ export const receivedInfo = async (req: Request, res: Response): Promise <void |
     try {
 
         const connection = await pool.getConnection();
+        
         try {
+
             const insertSQL = 'INSERT INTO users (name, email) VALUES (?, ?)';
             await connection.query(insertSQL, [name, email]);
 
@@ -56,7 +58,7 @@ export const receivedInfo = async (req: Request, res: Response): Promise <void |
             connection.release();
         }
 
-        res.render("receivedInfo", { name });
+        res.render("receivedInfo", {name});
         return true;
 
     } catch (error) {
