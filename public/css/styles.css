@@ -32,7 +32,7 @@ a {
 }
 
 a:hover {
-    color: rgb(124, 187, 242);
+    color: rgb(71, 152, 223);
 }
 
 ul {
@@ -130,4 +130,10 @@ article {
 
 .feedbackpost button:hover {
     background-color: #0056b3;
+}
+
+.linktryagain {
+    margin-top: 30px;
+    text-decoration: underline;
+    color: rgb(163, 204, 217);
 }
