@@ -42,7 +42,7 @@ export const accesspage = (req: Request, res: Response): void => {
 
 export const treatError = (req: Request, res: Response, next: NextFunction): void => {
 
-    res.send(404);
+    res.sendStatus(404);
     next();
 
 };
@@ -83,8 +83,8 @@ export const receivedInfo = async (req: Request, res: Response): Promise <void |
         return true;
 
     } catch (error) {
-        console.error("Erro ao acessar o banco de dados:", error);
-        throw new Error("Something went wrong with the database. Try again.");
+        console.error("Erro ao acessar o banco de dados: ".red.bold, error);
+        throw new Error("Something went wrong with the database. Try again.".red);
     };
 
 };

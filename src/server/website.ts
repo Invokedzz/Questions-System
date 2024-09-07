@@ -39,7 +39,7 @@ export class websiteGenerator {
 
         application.use(express.json());
         application.use(express.urlencoded({extended: true}));
-        application.use('/error', treatError);
+        application.use(treatError);
 
     };
 
