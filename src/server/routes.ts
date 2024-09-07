@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { Request, Response, NextFunction } from "express";
 
 import mysql from "mysql2/promise";
 
@@ -23,15 +23,28 @@ const pool = mysql.createPool({
 });
 
 export const homepage = (req: Request, res: Response): void => {
+
     res.render("homepage");
+    
 };
 
 export const aboutpage = (req: Request, res: Response): void => {
+
     res.render("aboutpage");
+
 };
 
 export const accesspage = (req: Request, res: Response): void => {
-    res.render("accesspage")
+
+    res.render("accesspage");
+
+};
+
+export const treatError = (req: Request, res: Response, next: NextFunction): void => {
+
+    res.send(404);
+    next();
+
 };
 
 export const receivedInfo = async (req: Request, res: Response): Promise <void | boolean> => {

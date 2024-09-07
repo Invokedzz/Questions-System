@@ -12,6 +12,8 @@ import { aboutpage } from "./routes";
 
 import { accesspage } from "./routes";
 
+import { treatError } from "./routes";
+
 import { receivedInfo } from "./routes";
 
 const application = express();
@@ -19,8 +21,10 @@ const port = process.env.PORT || 3000;
 
 
 application.engine("handlebars", engine({
+
     defaultLayout: "main",
     partialsDir: [path.join(__dirname, "../views/partials")],
+
 }));
 
 application.set("view engine", "handlebars");
@@ -35,6 +39,7 @@ export class websiteGenerator {
 
         application.use(express.json());
         application.use(express.urlencoded({extended: true}));
+        application.use('/error', treatError);
 
     };
 
@@ -65,8 +70,10 @@ export class websiteGenerator {
                 console.log(`Preparando a inicialização do servidor. Por favor aguarde...`.yellow.bold);
 
                 setTimeout(async (): Promise <void> => {
+
                     const { default: open } = await import ("open");
                     await open(`http://localhost:${port}`);
+                    
                 }, 3500);
 
             } catch (e) {
