@@ -1,27 +1,13 @@
-# Quiz
+#Sistema de Questões
 
-Este quiz foi criado para ensinar os mais jovens a respeito da Bíblia, de uma forma lúdica e divertida!
-Nesse projeto, trabalhei com prazos e pedidos do cliente. Utilizei metodologias ágeis para criar uma interface dinâmica, cheia de opções e garantindo a total funcionalidade do produto em questão.
+Foi o meu primeiro projeto voltado para freelance. Tive que trabalhar com prazos, e fiz uso de metodologias ágeis para a execução do produto.
+O projeto consiste num sistema de questões voltadas para o ensino religioso de crianças e adolescentes. E também, de um site oficial a respeito do projeto.
 
-Nesse projeto, fiz uso das seguintes tecnologias/frameworks: JavaScript, Node.js, Inquirer e Chalk.
+Utilizei das seguintes tecnologias para a realização do projeto:
 
-Futuramente, pretendo não só expandir esse projeto, mas compilar todo o código para TypeScript.
+- TypeScript (fornecendo um código mais seguro e fácil de trabalhar);
+- Node.js + Express (para execução de atividades no terminal);
+- Handlebars + CSS (Handlebars para trabalhar a estruturação do site com condicionais, e CSS para a estilização);
+- MySQL (um dos melhores bancos de dados do mercado - foi utilizado para guardar o nome e e-mail dos usuários).
 
-Como você pode iniciar esse projeto em sua máquina?
-
-Abra seu terminal no VSCODE, e insira as informações na sequência abaixo:
-
-1) npm init -y;
-2) npm install;
-3) node ./src/index.js;
-
-E está pronto!
-
----------------------------------------------------------------------------------------------------
-
-This quiz was created to teach about the Bible in a fun and interactive way!
-
-For this project, I worked with deadlines and various demands. To build it, I used JavaScript, Node.js, Inquirer, and Chalk.
-
-In the future, I plan to extend this project and compile the code into TypeScript.
-
+  --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
