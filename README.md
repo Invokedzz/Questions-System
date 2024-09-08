@@ -10,4 +10,11 @@ Utilizei das seguintes tecnologias para a realização do projeto:
 - Handlebars + CSS (Handlebars para trabalhar a estruturação do site com condicionais, e CSS para a estilização);
 - MySQL (um dos melhores bancos de dados do mercado - foi utilizado para guardar o nome e e-mail dos usuários).
 
+  Caso tenha o desejo de testar este projeto em sua máquina, faça download do projeto e siga esses passos no terminal:
+
+  - npm i;
+  - npm run dev ./src/interfaces.ts
+ 
+  A partir disso, você não terá acesso só ao quiz, mas ao site do projeto também! 
+
   --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
