@@ -210,15 +210,15 @@ export class creatingQuiz  {
       await this.questionsReceptor(
 
         'favoriteColor',
-        '1) Qual é a sua cor favorita?\n',
+        '1) Quais destas podemos dizer que fazem parte das cartas pastorais de Paulo?\n',
         [
-            { name: 'A) Azul', value: 'A' },
-            { name: 'B) Verde', value: 'B' },
-            { name: 'C) Vermelho', value: 'C' },
-            { name: 'D) Amarelo', value: 'D' },
+            { name: 'A) Filipenses', value: 'A' },
+            { name: 'B) 1 Coríntios', value: 'B' },
+            { name: 'C) Efésios', value: 'C' },
+            { name: 'D) Tito', value: 'D' },
             { name: 'E) Outro', value: 'E' },
         ],
-        'A',
+        'D',
         3
 
      );
@@ -226,15 +226,15 @@ export class creatingQuiz  {
      await this.questionsReceptor(
 
       'favoriteColor',
-      '2) Qual é a sua cor favorita?\n',
+      '2) Qual livro Paulo escreveu na prisão?\n',
       [
-          { name: 'A) Azul', value: 'A' },
-          { name: 'B) Verde', value: 'B' },
-          { name: 'C) Vermelho', value: 'C' },
-          { name: 'D) Amarelo', value: 'D' },
+          { name: 'A) Romanos', value: 'A' },
+          { name: 'B) Filemon', value: 'B' },
+          { name: 'C) 1 Timóteo', value: 'C' },
+          { name: 'D) 1 Tessalonicenses', value: 'D' },
           { name: 'E) Outro', value: 'E' },
       ],
-      'A',
+      'B',
       3
 
    );
@@ -242,130 +242,18 @@ export class creatingQuiz  {
    await this.questionsReceptor(
 
     'favoriteColor',
-    '3) Qual é a sua cor favorita?\n',
+    '3) O que significa a palavra "Tetelestai?"\n',
     [
-        { name: 'A) Azul', value: 'A' },
-        { name: 'B) Verde', value: 'B' },
-        { name: 'C) Vermelho', value: 'C' },
-        { name: 'D) Amarelo', value: 'D' },
+        { name: 'A) Santo', value: 'A' },
+        { name: 'B) Digno', value: 'B' },
+        { name: 'C) Está consumado', value: 'C' },
+        { name: 'D) Ressureição', value: 'D' },
         { name: 'E) Outro', value: 'E' },
     ],
-    'A',
+    'C',
     3
 
  );
-
- await this.questionsReceptor(
-
-  'favoriteColor',
-  '4) Qual é a sua cor favorita?\n',
-  [
-      { name: 'A) Azul', value: 'A' },
-      { name: 'B) Verde', value: 'B' },
-      { name: 'C) Vermelho', value: 'C' },
-      { name: 'D) Amarelo', value: 'D' },
-      { name: 'E) Outro', value: 'E' },
-  ],
-  'A',
-  3
-
-);
-
-await this.questionsReceptor(
-
-  'favoriteColor',
-  '5) Qual é a sua cor favorita?\n',
-  [
-      { name: 'A) Azul', value: 'A' },
-      { name: 'B) Verde', value: 'B' },
-      { name: 'C) Vermelho', value: 'C' },
-      { name: 'D) Amarelo', value: 'D' },
-      { name: 'E) Outro', value: 'E' },
-  ],
-  'A',
-  3
-
-);
-
-await this.questionsReceptor(
-
-  'favoriteColor',
-  '6) Qual é a sua cor favorita?\n',
-  [
-      { name: 'A) Azul', value: 'A' },
-      { name: 'B) Verde', value: 'B' },
-      { name: 'C) Vermelho', value: 'C' },
-      { name: 'D) Amarelo', value: 'D' },
-      { name: 'E) Outro', value: 'E' },
-  ],
-  'A',
-  3
-
-);
-
-await this.questionsReceptor(
-
-  'favoriteColor',
-  '7) Qual é a sua cor favorita?\n',
-  [
-      { name: 'A) Azul', value: 'A' },
-      { name: 'B) Verde', value: 'B' },
-      { name: 'C) Vermelho', value: 'C' },
-      { name: 'D) Amarelo', value: 'D' },
-      { name: 'E) Outro', value: 'E' },
-  ],
-  'A',
-  3
-
-);
-
-  await this.questionsReceptor(
-
-    'favoriteColor',
-    '8) Qual é a sua cor favorita?\n',
-    [
-        { name: 'A) Azul', value: 'A' },
-        { name: 'B) Verde', value: 'B' },
-        { name: 'C) Vermelho', value: 'C' },
-        { name: 'D) Amarelo', value: 'D' },
-        { name: 'E) Outro', value: 'E' },
-    ],
-    'A',
-    3
-
-  );
-
-  await this.questionsReceptor(
-
-    'favoriteColor',
-    '9) Qual é a sua cor favorita?\n',
-    [
-        { name: 'A) Azul', value: 'A' },
-        { name: 'B) Verde', value: 'B' },
-        { name: 'C) Vermelho', value: 'C' },
-        { name: 'D) Amarelo', value: 'D' },
-        { name: 'E) Outro', value: 'E' },
-    ],
-    'A',
-    3
-
-  );
-
-  await this.questionsReceptor(
-
-    'favoriteColor',
-    '10) Qual é a sua cor favorita?\n',
-    [
-        { name: 'A) Azul', value: 'A' },
-        { name: 'B) Verde', value: 'B' },
-        { name: 'C) Vermelho', value: 'C' },
-        { name: 'D) Amarelo', value: 'D' },
-        { name: 'E) Outro', value: 'E' },
-    ],
-    'A',
-    3
-
-  );
 
       return new Promise ((resolve) => {
 
